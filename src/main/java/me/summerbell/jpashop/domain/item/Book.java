@@ -16,4 +16,11 @@ public class Book extends Item{
     private String isbn;
 
 
+    public void change(Book book){
+        ((Item) book).change(book);
+        this.author = book.author;
+        this.isbn = book.isbn;
+    }
+
+
 }

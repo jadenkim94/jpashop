@@ -1,6 +1,7 @@
 package me.summerbell.jpashop.repository;
 
 import lombok.RequiredArgsConstructor;
+import me.summerbell.jpashop.domain.item.Book;
 import me.summerbell.jpashop.domain.item.Item;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,11 @@ public class ItemRepository {
         } else {
             em.merge(item);
         }
+    }
+
+    public void updateBook(Book book){
+        Book findBook = em.find(Book.class, book.getId());
+        findBook.change(book);
     }
 
     public Item findOne(Long id){

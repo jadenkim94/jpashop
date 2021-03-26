@@ -1,6 +1,7 @@
 package me.summerbell.jpashop.service;
 
 import lombok.RequiredArgsConstructor;
+import me.summerbell.jpashop.domain.item.Book;
 import me.summerbell.jpashop.domain.item.Item;
 import me.summerbell.jpashop.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ public class ItemService {
     @Transactional
     public void saveItem(Item item){
         itemRepository.save(item);
+    }
+
+    @Transactional
+    public void updateBook(Book book){
+        itemRepository.updateBook(book);
     }
 
     public List<Item> findItems(){

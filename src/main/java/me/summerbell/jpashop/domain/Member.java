@@ -1,5 +1,6 @@
 package me.summerbell.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class Member {
     @Embedded // @Embeddable / @Embedded 하나만 사용하면 되지만 가시성을 높이기 위해 둘 다 사용하겠음.
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 

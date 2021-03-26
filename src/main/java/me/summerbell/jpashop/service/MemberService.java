@@ -3,6 +3,7 @@ package me.summerbell.jpashop.service;
 import lombok.RequiredArgsConstructor;
 import me.summerbell.jpashop.domain.Member;
 import me.summerbell.jpashop.repository.MemberRepository;
+import me.summerbell.jpashop.repository.MemberRepositoryOld;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +40,13 @@ public class MemberService {
     }
 
     public Member findOne(Long memberId){
-        return memberRepository.findOne(memberId);
+        return memberRepository.findById(memberId).get();
+    }
+
+    @Transactional
+    public void update(Long id,  String name) {
+        Member findMember = memberRepository.findById(id).get();
+        findMember.setName(name);
     }
 
 }

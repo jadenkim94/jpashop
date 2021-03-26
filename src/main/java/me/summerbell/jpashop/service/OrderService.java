@@ -7,8 +7,9 @@ import me.summerbell.jpashop.domain.Order;
 import me.summerbell.jpashop.domain.OrderItem;
 import me.summerbell.jpashop.domain.item.Item;
 import me.summerbell.jpashop.repository.ItemRepository;
-import me.summerbell.jpashop.repository.MemberRepository;
-import me.summerbell.jpashop.repository.OrderRepository;
+import me.summerbell.jpashop.repository.MemberRepositoryOld;
+import me.summerbell.jpashop.repository.order.OrderRepository;
+import me.summerbell.jpashop.repository.OrderSearch;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final MemberRepository memberRepository;
+    private final MemberRepositoryOld memberRepository;
     private final ItemRepository itemRepository;
 
 
@@ -59,11 +60,12 @@ public class OrderService {
         order.cancel();
     }
 
+
     /**
      *  검색
      */
-    /*public List<Order> findOrders(OrderSearch orderSearch){
+    public List<Order> findOrders(OrderSearch orderSearch){
         return orderRepository.findAll(orderSearch);
-    }*/
+    }
     
 }
